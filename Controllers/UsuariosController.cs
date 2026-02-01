@@ -27,6 +27,8 @@ namespace AdministradorUsuarios.Controllers
 
         public IActionResult Create()
         {
+            var role = _rolActual.ObtenerRol();
+            if (role != "Administrador") return Forbid();
             ViewBag.CurrentRole = _rolActual.ObtenerRol();
             return View(new UsuarioFormVm());
         }
@@ -36,11 +38,12 @@ namespace AdministradorUsuarios.Controllers
         public async Task<IActionResult> Create(UsuarioFormVm vm)
         {
             var role = _rolActual.ObtenerRol();
+
             ViewBag.CurrentRole = role;
 
             if (!ModelState.IsValid) return View(vm);
 
-            var entity = new Usuario
+            var u = new Usuario
             {
                 Nombre = vm.Nombre,
                 Apellido = vm.Apellido,
@@ -49,7 +52,7 @@ namespace AdministradorUsuarios.Controllers
                 Rol = vm.Rol
             };
 
-            var result = await _usuarioService.CrearAsync(entity, role);
+            var result = await _usuarioService.CrearAsync(u, role);
             if (!result.ok)
             {
                 ModelState.AddModelError(string.Empty, result.error!);
