@@ -28,7 +28,7 @@ namespace AdministradorUsuarios.Application
         {
             // Usuario común: no puede asignar roles distintos
             if (rolActual != "Administrador")
-                usuario.Rol = rolActual;
+                return (false, "No tenés permisos para crear usuarios con este rol.");
 
             // Validación de email único
             if (await _usuarioRepository.ExisteEmailAsync(usuario.Email))
@@ -39,18 +39,10 @@ namespace AdministradorUsuarios.Application
         }
         public async Task<(bool ok, string? error)> ActualizarAsync(Usuario usuario, string rolActual)
         {
+            if (rolActual != "Administrador")
+                return (false, "No tenés permisos para editar usuarios con este rol.");
             var u = await _usuarioRepository.ObtenerUsuarioPorIdAsync(usuario.Id);
             if (u is null) return (false, "Usuario inexistente.");
-
-            // Permisos
-            if (rolActual != "Administrador")
-            {
-                if (u.Rol != rolActual)
-                    return (false, "No tenés permisos para editar este usuario.");
-
-                // Evitar elevar permisos
-                usuario.Rol = u.Rol;
-            }
 
             // Validación email único excluyendo el mismo Id
             if (await _usuarioRepository.ExisteEmailAsync(usuario.Email, usuario.Id))

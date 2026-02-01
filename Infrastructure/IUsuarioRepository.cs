@@ -10,7 +10,7 @@ namespace AdministradorUsuarios.Infrastructure
         Task<int> CrearAsync(Usuario usuario);
         Task ActualizarAsync (Usuario usuario);
         Task EliminarAsync(int id);
-        Task<bool> ExisteEmailAsync(string email,int? id =null);
+        Task<bool> ExisteEmailAsync(string email,int? excludeId =null);
 
     }
 }

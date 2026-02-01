@@ -1,0 +1,47 @@
+﻿@model AdministradorUsuarios.ViewModels.UsuarioFormVm
+
+<h2 class="mb-3">Crear usuario</h2>
+
+<div class="card">
+    <div class="card-body">
+        <form method="post" asp-action="Create">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <partial name="_UsuarioForm" model="Model" />
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary" id="btnGuardar" disabled>Guardar</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+
+            const form = $('form');
+            const btn = $('#btnGuardar');
+
+            function toggleButton() {
+                if (form.valid()) {
+                    btn.prop('disabled', false);
+                } else {
+                    btn.prop('disabled', true);
+                }
+            }
+
+            // chequeo inicial
+            toggleButton();
+
+            // cada vez que el usuario escribe o cambia algo
+            form.on('keyup change', 'input, select', function () {
+                toggleButton();
+            });
+        });
+    </script>
+}
