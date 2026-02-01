@@ -1,7 +1,15 @@
+using AdministradorUsuarios.Application;
+using AdministradorUsuarios.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Inyeccion de Dependencias
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddSingleton<IRolActual, RolActual>();
 
 var app = builder.Build();
 
