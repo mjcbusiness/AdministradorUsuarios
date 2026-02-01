@@ -9,7 +9,8 @@
         }
         public string ObtenerRol()
         {
-            return configuration["RolActual"] ?? "Usuario";
+            var aux = configuration["RolActual"] ?? "Administrador";
+            return aux;
         }
     }
 }

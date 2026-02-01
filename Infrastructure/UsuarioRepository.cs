@@ -19,7 +19,7 @@ namespace AdministradorUsuarios.Infrastructure
         }
         public async Task<IEnumerable<Usuario>> ObtenerUsuariosAsync()
         {
-            const string sql = "SELECT * FROM Usuarios AND Eliminado=0";
+            const string sql = "SELECT * FROM Usuarios WHERE Eliminado=0";
             using var conn = CrearConexion();
             return await conn.QueryAsync<Usuario>(sql);
         }
@@ -41,7 +41,7 @@ namespace AdministradorUsuarios.Infrastructure
             const string sql = @"INSERT INTO Usuarios (Nombre,Apellido,Documento, Email, Rol,Eliminado) 
                                  VALUES (@Nombre,@Apellido,@Documento, @Email, @Rol,0);
                                  SELECT CAST(SCOPE_IDENTITY() as int);";
-            using var conn = CrearConexion();
+            using var conn = CrearConexion();   
             return await conn.ExecuteScalarAsync<int>(sql, usuario);
         }
         public async Task ActualizarAsync(Usuario usuario)
@@ -65,16 +65,16 @@ namespace AdministradorUsuarios.Infrastructure
             await conn.ExecuteAsync(sql,new { Id=id });
         }
 
-        public async Task<bool> ExisteEmailAsync(string email,int? Id =null)
+        public async Task<bool> ExisteEmailAsync(string email,int? excludeId =null)
         {
             const string sql = @"
             SELECT COUNT(1)
             FROM dbo.Usuarios
-            WHERE Email = @email
-              AND (@excludeId IS NULL OR Id <> @Id);";
+            WHERE Email = @email AND Eliminado=0
+              AND (@excludeId IS NULL OR Id <> @excludeId);";
 
             using var conn = CrearConexion();
-            var count = await conn.ExecuteScalarAsync<int>(sql, new { email,Id });
+            var count = await conn.ExecuteScalarAsync<int>(sql, new { email,excludeId });
             return count > 0;
         }
 
