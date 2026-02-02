@@ -37,7 +37,7 @@ https://github.com/mjcbusiness/AdministradorUsuarios.git
 
 ## ARQUITECTURA Y ESTRUCTURA
 
-AdministradorUsuarios
+```AdministradorUsuarios
 │
 ├── Controllers
 │ ├── AccesoController.cs // Selección de rol
@@ -72,7 +72,7 @@ AdministradorUsuarios
 │
 ├── wwwroot
 └── Program.cs
-
+```
 -------------------------------------------------------------------------------------------------------------
 
 ##BASE DE DATOS
