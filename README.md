@@ -6,38 +6,39 @@ aplicando separación en capas, patrón MVC y uso de Bootstrap. Uso de Dapper en
 
 Clonar el proyecto desde GitHub ejecutando:
 
-``bash
+```
 https://github.com/mjcbusiness/AdministradorUsuarios.git
-
+```
 ## FUNCIONALIDADES
 
--> Listado de usuarios en grilla con estilos Bootstrap.
--> CRUD completo, el Delete lógico de usuarios.
--> Validaciones visuales en el Formulario del Usuario.
--> Confirmación visual al eliminar usuarios mediante una modal.
--> Manejo de Roles simulado
-  + "Administrador": puede hacer el CRUD completo.
-  + "Usuario": solo puede ver los usuarios.
--> Agregado de una pantalla inicial para poder seleccionar un rol (sin login real, segun lo especificado).
--> Opción para volver y cambiar el rol seleccionado.
+- Listado de usuarios en grilla con estilos Bootstrap.
+- CRUD completo, el Delete lógico de usuarios.
+- Validaciones visuales en el Formulario del Usuario.
+- Confirmación visual al eliminar usuarios mediante una modal.
+- Manejo de Roles simulado
+  - "Administrador": puede hacer el CRUD completo.
+  - "Usuario": solo puede ver los usuarios.
+- Agregado de una pantalla inicial para poder seleccionar un rol (sin login real, segun lo especificado).
+- Opción para volver y cambiar el rol seleccionado.
 
 ----------------------------------------------------------------------------------------------------------------
 ## STACK
 
--> .NET 8 - ASP.NET Core MVC
--> Dapper 2.1.66 (Acceso a datos)
--> SQL Server Express 
--> SQL Server Managment Studio
--> Bootstrap 5
--> jQuery Validation
--> Session para simulacion de rol
--> Arquitectura Limpia
+- .NET 8 - ASP.NET Core MVC
+- Dapper 2.1.66 (Acceso a datos)
+- SQL Server Express 
+- SQL Server Managment Studio
+- Bootstrap 5
+- jQuery Validation
+- Session para simulacion de rol
+- Arquitectura Limpia
 
 -----------------------------------------------------------------------------------------------------------------
 
 ## ARQUITECTURA Y ESTRUCTURA
 
-```AdministradorUsuarios
+```
+AdministradorUsuarios
 │
 ├── Controllers
 │ ├── AccesoController.cs // Selección de rol
@@ -75,22 +76,22 @@ https://github.com/mjcbusiness/AdministradorUsuarios.git
 ```
 -------------------------------------------------------------------------------------------------------------
 
-##BASE DE DATOS
--> SQL Server Express
--> SQL Server Managment Studio
+## BASE DE DATOS
+- SQL Server Express
+- SQL Server Managment Studio
 
 ## SCRIPT SQL
 
 El Repositorio INCLUYE el script: "Crear_BaseDeDatos.sql"
 
 Descripcion de este script:
--> Crea la base de datos **AdministradorUsuariosDb** si no existe.
--> Crea la tabla `Usuarios`.
--> Agrega:
+- Crea la base de datos **AdministradorUsuariosDb** si no existe.
+- Crea la tabla `Usuarios`.
+- Agrega:
   - Constraint `CHECK` para el campo `Rol`.
   - Columna `Eliminado` para borrado lógico.
   - Índice UNIQUE filtrado para evitar emails duplicados en usuarios activos.
--> Inserta datos de ejemplo de manera tal de que si anteriormente ya existia un usuario, es script lo ignora y no lo crea
+- Inserta datos de ejemplo de manera tal de que si anteriormente ya existia un usuario, es script lo ignora y no lo crea
 
 ### Ejecutar el script SQL
 
