@@ -6,9 +6,9 @@ aplicando separación en capas, patrón MVC y uso de Bootstrap. Uso de Dapper en
 
 Clonar el proyecto desde GitHub ejecutando:
 
-``bash
+```
 https://github.com/mjcbusiness/AdministradorUsuarios.git
-
+```
 ## FUNCIONALIDADES
 
 -> Listado de usuarios en grilla con estilos Bootstrap.
