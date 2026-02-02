@@ -1,6 +1,11 @@
 ﻿@model IEnumerable<AdministradorUsuarios.Domain.Usuario>
 
 <div class="d-flex align-items-center justify-content-between mb-3">
+    <div class="d-flex align-items-center gap-2">
+        <a class="btn btn-outline-secondary btn-sm" asp-controller="Acceso" asp-action="Index" title="Cambiar rol">
+            ← Volver
+        </a>
+    </div>
     <div>
         <h2 class="mb-0">Usuarios</h2>
         <div class="text-muted">Rol actual: <strong>@ViewBag.CurrentRole</strong></div>
