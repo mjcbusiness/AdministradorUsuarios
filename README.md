@@ -102,11 +102,14 @@ Descripcion de este script:
 ## Configuración del proyecto
 
 ### Cadena de conexión
-Editar el archivo `appsettings.json`:
+Editar el archivo `appsettings.json` PARA incluir la cadena de conexion a la BBDD y la configuración para la simulación de los roles:
 
 ```json
 "ConnectionStrings": {
   "Default": "Server=[TuServidor];Database=AdministradorUsuariosDb;Trusted_Connection=True;TrustServerCertificate=True;"
-}
+},
+  "AppRole": {
+    "RolActual": "Usuario"
+  },
 
 
