@@ -92,10 +92,16 @@ Descripcion de este script:
   - Índice UNIQUE filtrado para evitar emails duplicados en usuarios activos.
 -> Inserta datos de ejemplo de manera tal de que si anteriormente ya existia un usuario, es script lo ignora y no lo crea
 
-### Ejecutar el script
-1. Abrir SSMS o Azure Data Studio.
-2. Conectarse a `localhost\SQLEXPRESS`. esto puede variar
-3. Ejecutar el archivo `sql/Crear_BaseDeDatos.sql`.
+### Ejecutar el script SQL
+
+1. Abrir **SQL Server Management Studio (SSMS)** o **Azure Data Studio**.
+2. Conectarse al servidor SQL (por ejemplo: `localhost\SQLEXPRESS`).
+3. Abrir el archivo del proyecto:
+   - Menú **File → Open → File…**
+   - Seleccionar: `sql/Crear_BaseDeDatos.sql`
+4. Verificar que el script esté apuntando al servidor correcto.
+5. Ejecutar el script presionando **Execute** o la tecla **F5**.
+6. Verificar que se haya creado la tabla `dbo.Usuarios` dentro de la base de datos.
 
 ----------------------------------------------------------------------------------------------------------
 
