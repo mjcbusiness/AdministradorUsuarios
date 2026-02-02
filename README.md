@@ -71,8 +71,8 @@ https://github.com/mjcbusiness/AdministradorUsuarios.git
 │ └── _Layout.cshtml
 │
 ├── wwwroot
-└── Program.cs```
-
+└── Program.cs
+```
 -------------------------------------------------------------------------------------------------------------
 
 ##BASE DE DATOS
